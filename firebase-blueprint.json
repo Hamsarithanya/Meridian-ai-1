@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "Workspace": {
+      "title": "Workspace",
+      "description": "Private adaptive learning workspace for an authenticated Meridian AI learner.",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the workspace owner.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Learner display name.",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "profile": {
+          "type": "object",
+          "description": "Structured LearnerProfile map including skills, projects, and assessment history."
+        },
+        "orchestration": {
+          "type": "object",
+          "description": "Latest Multi-Agent OrchestrationState map (audits, roadmap, readinessScore, traces)."
+        },
+        "roles": {
+          "type": "array",
+          "description": "Available CareerRole benchmarks including custom generated roles."
+        },
+        "mentorMessages": {
+          "type": "array",
+          "description": "Adaptive AI Mentor conversation messages."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": [
+        "ownerId",
+        "displayName",
+        "profile",
+        "orchestration",
+        "roles",
+        "mentorMessages",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/workspaces/{userId}": {
+      "schema": {
+        "$ref": "#/entities/Workspace"
+      },
+      "description": "Private learner workspace document keyed by the user's Firebase Auth UID."
+    }
+  }
+}

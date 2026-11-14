@@ -1,0 +1,6 @@
+{
+  "name": "Meridian",
+  "description": "Simple, AI-powered personalized learning and career intelligence platform with multi-agent roadmap planning, live Google Search resources, voice conversations, and microphone transcription.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
